@@ -6,9 +6,10 @@ const resultContainer = document.getElementById("result-container");
 let currentSlide = 0;
 const data = [
   {
-    question: `Is this function pure?
-                const add = (x, y) => x + y;
-                add(2, 4);`,
+    question: `<div class='question-container bounceInRight'> 
+                <span>Is this function pure?</span>
+                <span class='space'>const add = (x, y) => x + y;</span>
+                <span class='space'>add(2, 4);</span></div>`,
     answers: {
       a: "Yes",
       b: "No"
@@ -16,11 +17,14 @@ const data = [
     correctAnswer: "a"
   },
   {
-    question: `What you can say about this function? let x = 2;
-                  const add = (y) => {
-                    x += y;
-                  };
-                  add(4);`,
+    question: `<div class='question-container bounceInRight'> 
+                <span> What you can say about this function?</span>
+                <span class='space'>let x = 2;</span>
+                <span class='space'> const add = (y) => {</span>
+                <span class='space2'>  x += y; </span>
+                <span class='space'>    }; </span>
+                <span class='space'>  add(4);</span>
+                  </div> `,
     answers: {
       a: "it is pure",
       b: "it is inpure",
@@ -29,10 +33,13 @@ const data = [
     correctAnswer: "b"
   },
   {
-    question: `is this function pure? const add = (x, y) => {
-                return  x + y
-                };
-                add(2, 4);`,
+    question: `<div class='question-container'> 
+                  <span>is this function pure?</span>
+                  <span class='space'>const add = (x, y) => {</span>
+                  <span class='space2'>return  x + y</span>
+                  <span class='space'> };</span>
+                  <span class='space'>add(2, 4);</span>
+                  </div>`,
     answers: {
       a: "Yes",
       b: "No"
@@ -40,7 +47,9 @@ const data = [
     correctAnswer: "a"
   },
   {
-    question: `How many arrguments recieves Arrays reduce method and is it pure?`,
+    question: `<div class='question-container'>
+                How many arrguments recieves Arrays reduce method and is it pure?
+                </div>`,
     answers: {
       a: "3 & Yes",
       b: "4 & No",
@@ -49,7 +58,9 @@ const data = [
     correctAnswer: "c"
   },
   {
-    question: `Which of Array methods do not return a new array`,
+    question: `<div class='question-container'>
+                   Which of Array methods do not return a new array
+                  </div>`,
     answers: {
       a: "map,filter,reduce,every",
       b: "every,some,reduce,forEach",
@@ -58,7 +69,9 @@ const data = [
     correctAnswer: "c"
   },
   {
-    question: `How many data types have JS`,
+    question: `<div class='question-container'>
+                 How many data types have JS
+                  </div>`,
     answers: {
       a: "6",
       b: "7",
@@ -68,15 +81,63 @@ const data = [
     correctAnswer: "c"
   },
   {
-    question: `How many data types have JS`,
+    question: `<div class='question-container'>
+                  What is the result?
+                  <span>[] + [] + 'foo'.split('');</span>
+                  </div>`,
     answers: {
-      a: "6",
-      b: "7",
-      c: "8",
-      d: "9"
+      a: '[][]"f,o,o"',
+      b: '"f,o,o"',
+      c: "[f,o,o]",
+      d: "NAN"
+    },
+    correctAnswer: "b"
+  },
+  {
+    question: `<div class='question-container'>
+                  <span>What is printed in the console?</span>
+                  <span>let myArr = ['foo', 'bar', 'baz'];</span>
+                  <span>myArr.length = 0;</span>
+                  <span>myArr.push('bin');</span>
+                  <span>console.log(myArr);</span>
+                  </div>`,
+    answers: {
+      a: "['foo', 'bar', 'baz']",
+      b: "['foo', 'bar', 'baz', 'bin']",
+      c: "[bin]",
+      d: "Error"
     },
     correctAnswer: "c"
-  }
+  },
+  {
+    question: `<div class='question-container'>
+                  <span>What is the result?</span>
+                  <span>String('Hello') === 'Hello';</span>
+                  </div>`,
+    answers: {
+      a: "true",
+      b: "false",
+      c: "TypeError",
+    },
+    correctAnswer: "a"
+  },
+  {
+    question: `<div class='question-container'>
+                  <span>What is alerted?</span>
+                  <span>var arr = [];</span>
+                  <span>arr[0]  = 'a';</span>
+                  <span>arr[1]  = 'b';</span>
+                  <span>arr.foo = 'c';</span>
+                  <span>alert(arr.length);</span>
+                  </div>`,
+    answers: {
+      a: "2",
+      b: "3",
+      c: "Undefined",
+      d: "typeError"
+    },
+    correctAnswer: "a"
+  },
 ];
 
 const buildQuiz = () => {
@@ -119,7 +180,8 @@ const showResults = () => {
       answersContainers[questionNumber].style.color = "red";
     }
   });
-  resultContainer.innerHTML = points + " of " + data.length;
+  resultContainer.innerHTML = points + " right of " + data.length;
+  alert(`you gain ${points} points from ${data.length} ` )
 };
 
 const slides = document.querySelectorAll(".slide");
